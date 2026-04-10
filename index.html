@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《币安人生》人物导读</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800&family=Noto+Serif+SC:wght@400;700&display=swap');
+  :root {
+    --bg: #f5f2ed; --card-bg: #ffffff; --text: #1a1a1a; --text-dim: #6b7280;
+    --border: #e5e2dc; --border-light: #f0ede8;
+    --rose: #dc4a5a; --rose-bg: #fdf2f3; --rose-border: #fecdd3;
+    --blue: #3b82f6; --blue-bg: #eff6ff; --blue-border: #bfdbfe;
+    --teal: #0d9488; --teal-bg: #f0fdfa; --teal-border: #99f6e4;
+    --purple: #7c3aed; --purple-bg: #f5f3ff; --purple-border: #ddd6fe;
+    --slate: #475569; --slate-bg: #f8fafc; --slate-border: #e2e8f0;
+    --amber: #d97706; --amber-bg: #fffbeb; --amber-border: #fde68a;
+    --gold: #F0B90B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter','Noto Sans SC',sans-serif; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+  /* Top navbar */
+  .topbar { background: #1a1a1a; padding: 12px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+  .topbar-logo { color: var(--gold); font-size: 18px; font-weight: 900; letter-spacing: -0.5px; }
+  .topbar-badge { background: rgba(240,185,11,0.15); border: 1px solid rgba(240,185,11,0.3); color: var(--gold); font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.5px; }
+
+  /* Header */
+  .header { padding: 50px 40px 36px; text-align: center; max-width: 900px; margin: 0 auto; }
+  .header-logo { font-size: 56px; font-weight: 900; color: var(--text); letter-spacing: -2px; line-height: 1.1; }
+  .header-logo span { color: var(--gold); }
+  .header h1 { font-size: 36px; font-weight: 900; color: var(--text); margin: 8px 0 10px; letter-spacing: -1px; }
+  .header .model-credit { display: inline-block; background: #1a1a1a; color: #e5e5e5; font-size: 12px; font-weight: 600; padding: 5px 16px; border-radius: 20px; margin-bottom: 14px; letter-spacing: 0.3px; }
+  .header .model-credit em { color: var(--gold); font-style: normal; font-weight: 700; }
+  .header .subtitle { font-size: 15px; color: var(--text-dim); line-height: 1.6; max-width: 600px; margin: 0 auto; }
+  .header .book-ref { font-size: 13px; color: #9ca3af; margin-top: 8px; font-style: italic; }
+
+  /* Stats */
+  .stats-bar { display: flex; justify-content: center; gap: 48px; padding: 20px 40px 28px; max-width: 900px; margin: 0 auto; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 32px; font-weight: 800; color: var(--text); letter-spacing: -1px; }
+  .stat-num span { font-size: 16px; font-weight: 400; color: var(--text-dim); margin-left: 2px; }
+  .stat-label { font-size: 12px; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
+
+  /* Disclaimer */
+  .disclaimer { max-width: 1200px; margin: 0 auto 20px; padding: 0 40px; }
+  .disclaimer-box { background: #fefce8; border: 1px solid #fde68a; border-radius: 10px; padding: 16px 20px; font-size: 13px; color: #92400e; line-height: 1.7; }
+
+  /* Nav */
+  .topnav { display: flex; justify-content: center; gap: 6px; padding: 12px 40px 0; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; }
+  .topnav a { color: var(--text-dim); text-decoration: none; font-size: 13px; font-weight: 500; padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border); transition: all 0.2s; background: var(--card-bg); }
+  .topnav a:hover { color: var(--text); border-color: var(--text); }
+
+  /* Section */
+  .section { padding: 30px 40px; max-width: 1200px; margin: 0 auto; }
+  .section-band { padding: 10px 0 0; margin: 0; }
+  .section-band-rose { background: linear-gradient(180deg, #fdf2f3 0%, var(--bg) 100%); }
+  .section-band-blue { background: linear-gradient(180deg, #eff6ff 0%, var(--bg) 100%); }
+  .section-band-teal { background: linear-gradient(180deg, #f0fdfa 0%, var(--bg) 100%); }
+  .section-band-purple { background: linear-gradient(180deg, #f5f3ff 0%, var(--bg) 100%); }
+  .section-band-slate { background: linear-gradient(180deg, #f1f5f9 0%, var(--bg) 100%); }
+  .section-band-amber { background: linear-gradient(180deg, #fffbeb 0%, var(--bg) 100%); }
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 2px solid var(--border); }
+  .section-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .section-title { font-size: 22px; font-weight: 800; color: var(--text); letter-spacing: -0.5px; }
+  .section-count { margin-left: auto; background: var(--bg); color: var(--text-dim); font-size: 13px; font-weight: 500; padding: 4px 14px; border-radius: 12px; border: 1px solid var(--border); }
+
+  /* Grid & Cards */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 18px; margin-bottom: 50px; }
+  .card { background: var(--card-bg); border: 1px solid var(--border-light); border-radius: 14px; padding: 22px; transition: transform 0.2s, box-shadow 0.2s; }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+  .card-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+
+  /* Avatar */
+  .avatar { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; font-weight: 700; overflow: hidden; position: relative; color: #fff; }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; border-radius: 50%; }
+  .avatar .initials { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .av-rose { background: var(--rose); }
+  .av-blue { background: var(--blue); }
+  .av-teal { background: var(--teal); }
+  .av-purple { background: var(--purple); }
+  .av-slate { background: var(--slate); }
+  .av-amber { background: var(--amber); }
+  .av-gold { background: var(--gold); color: #1a1a1a; }
+
+  .card-title-area { flex: 1; min-width: 0; }
+  .card-name { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+  .card-title { font-size: 12px; color: var(--text-dim); line-height: 1.4; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+  .tag { font-size: 11px; font-weight: 600; padding: 2px 10px; border-radius: 20px; letter-spacing: 0.3px; }
+  .tag-blue { background: var(--blue-bg); color: var(--blue); }
+  .tag-gray { background: var(--slate-bg); color: var(--slate); border: 1px solid var(--slate-border); }
+  .tag-gold { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
+  .tag-purple { background: var(--purple-bg); color: var(--purple); }
+  .tag-rose { background: var(--rose-bg); color: var(--rose); }
+  .tag-teal { background: var(--teal-bg); color: var(--teal); }
+
+  /* Dual-view */
+  .dual-view { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .view-block { border-radius: 8px; padding: 12px 14px; font-size: 12.5px; line-height: 1.7; }
+  .view-book { background: #fffbeb; border-left: 3px solid var(--gold); color: #78350f; }
+  .view-fact { background: var(--blue-bg); border-left: 3px solid var(--blue); color: #1e3a5f; }
+  .view-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 5px; display: block; }
+  .view-label.book { color: var(--amber); }
+  .view-label.fact { color: var(--blue); }
+
+  /* Single desc */
+  .desc { font-size: 13.5px; color: var(--text-dim); line-height: 1.75; }
+
+  /* Quote block between sections */
+  .quote-divider { max-width: 700px; margin: 0 auto 30px; text-align: center; padding: 20px 40px; }
+  .quote-divider p { font-family: 'Noto Serif SC', serif; font-size: 16px; color: var(--text-dim); font-style: italic; line-height: 1.8; }
+  .quote-divider .quote-src { font-size: 12px; color: #9ca3af; margin-top: 8px; font-family: 'Inter','Noto Sans SC',sans-serif; font-style: normal; }
+
+  /* Footer */
+  .footer { text-align: center; padding: 40px; color: var(--text-dim); font-size: 13px; line-height: 1.8; border-top: 1px solid var(--border); max-width: 1200px; margin: 20px auto 0; }
+
+  @media (max-width: 768px) {
+    .topbar { padding: 10px 20px; }
+    .header { padding: 30px 20px 24px; } .header h1 { font-size: 26px; }
+    .header-logo { font-size: 40px; }
+    .section { padding: 20px; } .stats-bar { gap: 24px; }
+    .grid { grid-template-columns: 1fr; }
+    .dual-view { grid-template-columns: 1fr; }
+    .disclaimer { padding: 0 20px; }
+    .topnav { padding: 12px 20px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo">CZ · 书中的人</div>
+  <div class="topbar-badge">Distilled by Claude Opus 4.6</div>
+</div>
+
+<div class="header">
+  <div class="header-logo"><span>CZ</span></div>
+  <h1>书中的人</h1>
+  <div class="model-credit">Distilled by <em>Claude Opus 4.6</em></div>
+  <div class="subtitle">赵长鹏（CZ）回忆录《幣安人生》中提及的人物梳理<br>书中描述 vs 公开记录，供读者自行判断</div>
+  <div class="book-ref">《幣安人生：幸運、韌性與保護用戶的回憶錄》 · Freedom of Money Foundation · 2026</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">54<span>+</span></div><div class="stat-label">提及人物</div></div>
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label">分类</div></div>
+  <div class="stat"><div class="stat-num">240</div><div class="stat-label">原书页数</div></div>
+</div>
+
+<div class="disclaimer">
+  <div class="disclaimer-box" style="background:#fef2f2; border-color:#fca5a5; color:#991b1b;">
+    <strong>⚠️ 为什么做这个页面：</strong>近期市场上出现了一些恶意「蒸馏」CZ 回忆录的内容，通过有引导性和诱导性的提示词对原书进行篡改，导致大量内容被歪曲。为了抵制这种行为，我们特地让 Claude 基于原书做了客观的蒸馏版本，避免大家被误导。
+  </div>
+</div>
+
+<div class="disclaimer">
+  <div class="disclaimer-box">
+    <strong>阅读说明：</strong>「书中描述」均来自CZ的第一人称叙述，反映作者个人记忆与立场，不代表事实全貌。「公开背景」来自公开报道与法律文件。涉及法律纠纷、商业冲突等事项，当事各方可能有不同说法。本书自身也承认「记忆总有偏差」。
+  </div>
+</div>
+
+<nav class="topnav">
+  <a href="#sec-family">家人</a>
+  <a href="#sec-cofounders">创始团队</a>
+  <a href="#sec-mentors">引路人与挚友</a>
+  <a href="#sec-industry">行业人物</a>
+  <a href="#sec-politics">政要与机构</a>
+  <a href="#sec-adversaries">对立方与争议</a>
+</nav>
+
+<!-- ========== 家人 ========== -->
+<div class="section-band section-band-rose">
+<div class="section">
+<div id="sec-family" class="section-header">
+  <div class="section-dot" style="background:var(--rose)"></div>
+  <div class="section-title">家人</div>
+  <div class="section-count">5 人</div>
+</div>
+<div class="grid">
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-rose"><img src="https://unavatar.io/twitter/heyibinance" onerror="this.remove()"><span class="initials">何</span></div>
+      <div class="card-title-area">
+        <div class="card-name">何一 (Yi He)</div>
+        <div class="card-title">币安联席CEO · 序言作者 · CZ伴侣</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gold">序言作者</span><span class="tag tag-blue">联席CEO</span><span class="tag tag-gray">伴侣关系</span></div>
+    <div class="dual-view">
+      <div class="view-block view-book"><span class="view-label book">书中描述</span>全书情感浓度最高的人物，唯一为全书作序者。脱口而出「币安」二字命名公司，是第一个认真修改白皮书的顾问且不要任何代币额度，BNB跌40%后仍如约加入。序言中称CZ「被人捧成耶稣的时候没飘，被踩进泥里的时候没崩」。</div>
+      <div class="view-block view-fact"><span class="view-label fact">公开背景</span>何一于2019年正式担任币安联席创始人，2024年5月升任联席CEO。此前为一下科技（旗下一直播平台）副总裁。她与CZ的私人关系在书出版前已为公众所知。作为序言作者，其立场天然倾向CZ一方。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-rose"><span class="initials">父</span></div>
+      <div class="card-title-area">
+        <div class="card-name">CZ父亲</div>
+        <div class="card-title">中科大研究员 · UBC博士</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gold">精神底色</span><span class="tag tag-gray">学术背景</span></div>
+    <div class="desc">书中描述为文革期间错失大学教育、靠自学考上研究生的「村里第一个大学生」。后赴加拿大UBC读博，花七千加元给CZ买第一台电脑。2021年去世。CZ称父亲对他勤俭、理性、重视教育的人生观有深远影响。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-rose"><span class="initials">母</span></div>
+      <div class="card-title-area">
+        <div class="card-name">CZ母亲</div>
+        <div class="card-title">数学历史教师 · 移民后从事缝纫工作</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gold">教育重视</span><span class="tag tag-gray">移民牺牲</span></div>
+    <div class="desc">在中国时是中学数学和历史教师，移居加拿大后在缝纫厂工作多年。书中描述她在农村时为姐弟各准备了书桌（「堪称奢侈」），82岁时坐六小时车来探监被拒在门外，CZ出狱时「飞奔跑向她」。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-rose"><span class="initials">姐</span></div>
+      <div class="card-title-area">
+        <div class="card-name">CZ姐姐</div>
+        <div class="card-title">家庭支柱 · 职场引路人</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">手足</span><span class="tag tag-blue">职场引介</span></div>
+    <div class="desc">书中描述14岁一边上学一边做全家晚饭，大学期间接济CZ三千加元，引荐CZ进入日本IT公司。CZ入狱时陪他报到，出狱时接他离开。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-rose"><span class="initials">姥</span></div>
+      <div class="card-title-area">
+        <div class="card-name">CZ外婆</div>
+        <div class="card-title">童年陪伴者</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">家族</span></div>
+    <div class="desc">书中描述为CZ童年重要的陪伴者。「口袋像魔术师帽，总能变出花生和零食。」父亲常年不在身边时，与母亲一同照顾CZ和姐姐。</div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="quote-divider">
+  <p>「勇于走出自己的路，而不是选了一条安全的路却为此遗憾终生。」</p>
+  <div class="quote-src">—— CZ父亲，书中引述</div>
+</div>
+
+<!-- ========== 创始团队 ========== -->
+<div class="section-band section-band-blue">
+<div class="section">
+<div id="sec-cofounders" class="section-header">
+  <div class="section-dot" style="background:var(--blue)"></div>
+  <div class="section-title">创始团队与核心员工</div>
+  <div class="section-count">7 人</div>
+</div>
+<div class="grid">
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-blue"><span class="initials">R</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Roger（创始CTO）</div>
+        <div class="card-title">币安创始CTO · 前野村/摩根士丹利</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-blue">技术核心</span><span class="tag tag-gray">创始团队</span></div>
+    <div class="desc">书中描述为「很多我觉得要花几周的任务，他几天就交付了」的高效技术负责人。投资FTX时，Roger与何一均投反对票。后成为币安创始CTO。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-blue"><span class="initials">A</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Allan（创始产品）</div>
+        <div class="card-title">币安创始产品经理</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-blue">产品设计</span><span class="tag tag-gray">创始团队</span></div>
+    <div class="desc">书中描述为「学历普通但胜在极度勤奋」，带领团队做出的币安交易界面「至今仍被全球众多交易所沿用」。后因管理能力不足调岗，CZ对此评价正面。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-blue"><span class="initials">J</span></div>
+      <div class="card-title-area">
+        <div class="card-name">James（工程骨干）</div>
+        <div class="card-title">币安早期技术核心</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-blue">技术</span><span class="tag tag-gray">长期共事</span></div>
+    <div class="desc">书中描述为CZ在富讯时的下属，「话多但靠谱，再难的事交给他总能搞定」。CZ一说创业立刻加入。书中称「直到现在他还在币安带最硬核的工程团队」。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-blue"><span class="initials">Su</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Sunny（项目经理）</div>
+        <div class="card-title">前埃森哲顾问 · 创始执行团队</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-blue">执行</span><span class="tag tag-gray">创始团队</span></div>
+    <div class="desc">书中描述为「逻辑极强，脑子里能同时理清几百项任务」的执行者。上线仪式出问题时用「确定」两个字解决危机。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-blue"><span class="initials">H</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Heina（后台支柱）</div>
+        <div class="card-title">比捷科技后台负责人</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-blue">运营</span><span class="tag tag-gray">二十年交情</span></div>
+    <div class="desc">书中描述为从四川农村出来、边打工边读书的同事，在比捷科技时一人撑起人事、财务、法务、工商全部后台工作。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-blue"><span class="initials">周</span></div>
+      <div class="card-title-area">
+        <div class="card-name">周伟（前CFO）</div>
+        <div class="card-title">币安前首席财务官</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-purple">复杂角色</span><span class="tag tag-blue">美国战略</span></div>
+    <div class="dual-view">
+      <div class="view-block view-book"><span class="view-label book">书中描述</span>主导币安美国站战略和BUSD项目。对SBF极度欣赏，力主投资FTX（Roger和何一均反对）。后被指修改投决会文件删除关键投资人信息，CZ选择让其辞职。离开后建了「币安复仇者」群。后在美国司法部案中作证指控CZ。</div>
+      <div class="view-block view-fact"><span class="view-label fact">公开背景</span>周伟是前Grindr CFO，后加入币安。据美国司法部文件，周伟在CZ的认罪协议中以证人身份出现。书中对周伟的描述高度负面，但周伟本人并未公开回应书中的指控，读者应注意这是单方面叙述。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-blue"><span class="initials">Td</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Ted（高中挚友）</div>
+        <div class="card-title">币安业务拓展负责人</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">老友</span><span class="tag tag-blue">业务拓展</span></div>
+    <div class="desc">书中描述为CZ高中最好的朋友，看到ICO博客后直接打电话说「我能加入吗？啥都行」，第二天提交辞呈加入币安。后来负责币安学院的创建。</div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- ========== 引路人与挚友 ========== -->
+<div class="section-band section-band-teal">
+<div class="section">
+<div id="sec-mentors" class="section-header">
+  <div class="section-dot" style="background:var(--teal)"></div>
+  <div class="section-title">引路人、挚友与人生贵人</div>
+  <div class="section-count">10 人</div>
+</div>
+<div class="grid">
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-teal"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vitalik_Buterin_TechCrunch_London_2015_%28cropped%29.jpg/200px-Vitalik_Buterin_TechCrunch_London_2015_%28cropped%29.jpg" onerror="this.src='https://unavatar.io/twitter/VitalikButerin';this.onerror=function(){this.remove()}"><span class="initials">V</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Vitalik Buterin</div>
+        <div class="card-title">以太坊创始人</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-teal">技术贡献</span><span class="tag tag-gray">长期相交</span></div>
+    <div class="dual-view">
+      <div class="view-block view-book"><span class="view-label book">书中描述</span>2013年结识，当时19岁。曾住在CZ家与其儿子睡上下铺、教「无穷数」。FTX崩盘后建议用零知识证明做储备金证明，被采纳。2025年CZ向其防疫项目捐赠1000万美元BNB。CZ称「为了社会的发展，我们需要保护像他这样的人」。</div>
+      <div class="view-block view-fact"><span class="view-label fact">公开背景</span>Vitalik Buterin是以太坊创始人，加密行业最具影响力的技术人物之一。值得注意的是，2019年Vitalik曾公开表示「我希望所有中心化交易所都下地狱」，CZ在书中对此评论为「只是表达去中心化理念，并无恶意」。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-teal"><span class="initials">曹</span></div>
+      <div class="card-title-area">
+        <div class="card-name">曹大荣</div>
+        <div class="card-title">光速中国总经理</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gold">比特币引路人</span></div>
+    <div class="desc">书中描述为2013年牌桌上一句「有个叫比特币的新东西，你可以看看」改变了CZ人生轨迹的人。是CZ进入加密领域最重要的引路人。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-teal"><span class="initials">S</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Sean（老友）</div>
+        <div class="card-title">早期天使投资人</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">十年挚友</span><span class="tag tag-teal">天使投资</span></div>
+    <div class="desc">书中描述为「认识近十年，共同投资三次次次血本无归，但谁都没埋怨过谁」的兄弟。ICO当晚决定投入最高档。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-teal"><span class="initials">E</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Eric（老友）</div>
+        <div class="card-title">连续创业者 · 曾将公司卖给摩托罗拉</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gold">人生转折</span></div>
+    <div class="desc">书中描述在CZ沉溺扑克时，直白说出「以你的智商和情商，本可以成就更大的事业。现在的你，完全是在浪费生命」，被CZ视为人生转折点。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-teal"><span class="initials">Co</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Conrad（排球教练）</div>
+        <div class="card-title">UBC排球队长</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gold">人生导师</span></div>
+    <div class="desc">书中描述注意到买不起报名费坐在看台上的CZ并喊他下场参加训练。教会CZ「永不中断自己的惯性势头」和「到场是成功的八成」。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-teal"><span class="initials">Sh</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Sheila（辅导老师）</div>
+        <div class="card-title">中学辅导老师</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">善意帮助</span></div>
+    <div class="desc">书中描述CZ患严重口吃时，主动引荐一位免费帮忙的退休语言治疗师。四周后口吃基本痊愈。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-teal"><span class="initials">MS</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Michael Santos</div>
+        <div class="card-title">前囚犯 · 监狱顾问 · 作家</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">狱中顾问</span><span class="tag tag-teal">Giggle Academy合作者</span></div>
+    <div class="desc">书中描述为23岁因贩大麻被判45年、实际坐了26年、狱中读完大学研究生并出版六本书的励志人物。CZ称他是「上帝的礼物」，免费提供了大量实用监狱建议。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-teal"><span class="initials">CP</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Cooperstock教授</div>
+        <div class="card-title">麦吉尔大学AI教授</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">学术引导</span></div>
+    <div class="desc">书中描述带领CZ参与RoboCup机器人足球大赛，联合发表2000年AAAI论文，并给CZ兼职机会。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-teal"><img src="https://unavatar.io/twitter/MatthewRoszak" onerror="this.remove()"><span class="initials">MR</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Matthew Roszak</div>
+        <div class="card-title">Hemi联合创始人 · 推荐语作者</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">推荐语</span><span class="tag tag-teal">监狱探访</span></div>
+    <div class="desc">为本书撰写推荐语。书中描述入狱期间曾专程从达拉斯开七小时车来探望CZ。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-teal"><span class="initials">SA</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Sarah & Amelia（缓刑官）</div>
+        <div class="card-title">量刑前报告缓刑官</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">法律程序</span></div>
+    <div class="desc">书中描述与CZ聊了四个多小时，「真心想了解我到底是一个怎样的人」，建议法官判五个月居家监禁。CZ称她们是「在美国遇到过的最善良的政府工作人员」。</div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<div class="quote-divider">
+  <p>「他在一个陌生的国家坐在看台上看别人打球，不是因为不想打——是因为付不起报名费。」</p>
+  <div class="quote-src">—— 关于CZ与排球教练Conrad的故事</div>
+</div>
+
+<!-- ========== 行业人物 ========== -->
+<div class="section-band section-band-purple">
+<div class="section">
+<div id="sec-industry" class="section-header">
+  <div class="section-dot" style="background:var(--purple)"></div>
+  <div class="section-title">行业人物与商业伙伴</div>
+  <div class="section-count">12 人</div>
+</div>
+<div class="grid">
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-purple"><img src="https://unavatar.io/twitter/bobbyclee" onerror="this.remove()"><span class="initials">李</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Bobby Lee（李启元）</div>
+        <div class="card-title">比特币中国CEO</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">行业同仁</span><span class="tag tag-purple">三次邀请</span></div>
+    <div class="desc">书中描述早期引荐CZ进入比特币领域（「你应该把资产的10%换成比特币」），后三次邀请CZ加入比特币中国均被婉拒。描述温和。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-purple"><span class="initials">沈</span></div>
+      <div class="card-title-area">
+        <div class="card-name">沈南鹏</div>
+        <div class="card-title">红杉中国创始合伙人</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">投资未成</span></div>
+    <div class="desc">书中描述何一加入当天主动联系想投资币安，约在静安香格里拉晚上十点半见面。CZ评价「这位已被誉为拥有中国网路半壁江山的投资人，看人还是很准的」。因中国禁令最终未投成。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-purple"><img src="https://unavatar.io/twitter/justinsuntron" onerror="this.remove()"><span class="initials">孙</span></div>
+      <div class="card-title-area">
+        <div class="card-name">孙宇晨</div>
+        <div class="card-title">波场创始人</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">行业人物</span></div>
+    <div class="desc">书中描述为币安早期办公室访客之一，「说特地来拜山头」。后来收购了李林卖出的火币。书中着墨不多，描述中性。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-purple"><img src="https://unavatar.io/twitter/ChandlerGuo" onerror="this.remove()"><span class="initials">郭</span></div>
+      <div class="card-title-area">
+        <div class="card-name">郭宏才（二宝）</div>
+        <div class="card-title">加密OG · 币安特别顾问</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">行业人物</span><span class="tag tag-purple">特别顾问</span></div>
+    <div class="desc">书中描述2017年重庆火锅一晚500人花两个比特币做东。主动提出做CZ「特别顾问」，后把所有代币额度全捐给币安慈善。CZ评价「很多人拿二宝的学历和背景定义他，实际他对世界有独到的理解，而且非常慷慨」。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-purple"><span class="initials">杨</span></div>
+      <div class="card-title-area">
+        <div class="card-name">杨林科</div>
+        <div class="card-title">比特币中国联合创始人</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-purple">ICO引介</span></div>
+    <div class="desc">书中描述为向CZ介绍ICO概念的人。其九天募集1500万美元的案例触发了CZ「我也可以」的判断，是币安ICO的间接启动者。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-purple"><span class="initials">Ri</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Rich Teo</div>
+        <div class="card-title">Paxos联合创始人 · BUSD合作方</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-purple">BUSD合作</span><span class="tag tag-gray">行业老友</span></div>
+    <div class="desc">书中描述2014年上海路边摊喝啤酒认识，「难得的是他跟我们这些穷人处得来」。提议BUSD合作，亦提醒CZ注意SBF在美国政界的动向。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-purple"><img src="https://unavatar.io/twitter/JihanWu" onerror="this.remove()"><span class="initials">吴</span></div>
+      <div class="card-title-area">
+        <div class="card-name">吴忌寒</div>
+        <div class="card-title">比特大陆联合创始人</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">行业同仁</span></div>
+    <div class="desc">书中描述为促成CZ与不丹国王会晤的中间人。着墨不多。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-purple"><img src="https://unavatar.io/twitter/MagicalTux" onerror="this.remove()"><span class="initials">MK</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Mark Karpeles</div>
+        <div class="card-title">Mt. Gox创始人</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">行业警示</span></div>
+    <div class="dual-view">
+      <div class="view-block view-book"><span class="view-label book">书中描述</span>「法日混血的年轻人，竟在商务会谈时专注地玩电子游戏」。CZ曾想加入Mt.Gox但未成，后Mt.Gox倒闭，CZ损失100个BTC。</div>
+      <div class="view-block view-fact"><span class="view-label fact">公开背景</span>Mt.Gox于2014年宣布破产，当时是最大的比特币交易所。Karpeles后因挪用资金被日本法院判有罪（缓刑），2024年Mt.Gox终于开始偿还债权人。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-purple"><span class="initials">Br</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Brandon（CMC创始人）</div>
+        <div class="card-title">CoinMarketCap创始人</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-purple">收购对象</span></div>
+    <div class="desc">书中描述为低调创始人，CMC流量最大却不怎么赚钱。「他更关心收购后的打算，把网站当自己孩子，想给它找个好归宿。」2020年币安以约4亿美元收购CoinMarketCap。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-purple"><span class="initials">Lu</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Luke Wagman</div>
+        <div class="card-title">CoinMarketCap联合创始人</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">纹身事件</span></div>
+    <div class="desc">书中描述CZ看到他手臂上的比特币纹身后，当晚三人一起纹了币安Logo，成为全球最早纹这个图案的人。CZ称这是「直到今天唯一的纹身」。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-purple"><img src="https://unavatar.io/twitter/RayDalio" onerror="this.remove()"><span class="initials">RD</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Ray Dalio</div>
+        <div class="card-title">桥水基金创始人 · 推荐语作者</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gold">推荐语</span><span class="tag tag-gray">导师角色</span></div>
+    <div class="desc">为本书撰写推荐语。书中描述CZ受其反馈系统(DOT)启发。2022年在阿布达比会面，Ray脚踝受伤仍从巴林飞来币安团建。CZ评价「知识渊博，本人却非常谦逊」。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-purple"><span class="initials">LF</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Larry Fink</div>
+        <div class="card-title">贝莱德董事长兼CEO · 推荐语作者</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gold">推荐语</span><span class="tag tag-gray">机构金融</span></div>
+    <div class="desc">为本书撰写推荐语。贝莱德后来推出全球最大的比特币现货ETF（iShares Bitcoin Trust）。书中对其描述简短。</div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<div class="quote-divider">
+  <p>「他不卖币，是有原因的。他需要让用户看到：创始人与平台共进退。」</p>
+  <div class="quote-src">—— 书中关于CZ从不减持BNB的解释</div>
+</div>
+
+<!-- ========== 政要与机构 ========== -->
+<div class="section-band section-band-slate">
+<div class="section">
+<div id="sec-politics" class="section-header">
+  <div class="section-dot" style="background:var(--slate)"></div>
+  <div class="section-title">政要与政府机构</div>
+  <div class="section-count">8 人/机构</div>
+</div>
+<div class="grid">
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-slate"><span class="initials">王</span></div>
+      <div class="card-title-area">
+        <div class="card-name">不丹国王（旺楚克）</div>
+        <div class="card-title">不丹国王 · 推荐语作者</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gold">推荐语</span><span class="tag tag-gray">区块链合作</span></div>
+    <div class="desc">为本书撰写推荐语。书中描述亲自在首都单独会面，带CZ考察Gelephu新区和比特币矿场。CZ评价「他的聪明和谦逊让我印象深刻，是真心想让国家好」。不丹确实是早期探索比特币挖矿的主权国家之一。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-slate"><img src="https://unavatar.io/twitter/realDonaldTrump" onerror="this.remove()"><span class="initials">Tr</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Donald Trump</div>
+        <div class="card-title">美国总统 · 特赦颁发者</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">特赦</span><span class="tag tag-blue">加密政策</span></div>
+    <div class="dual-view">
+      <div class="view-block view-book"><span class="view-label book">书中描述</span>2025年10月21日颁发「全面且无条件的特赦」。CZ在飞往吉尔吉斯的路上才得知消息，称自己是「最后一个知道自己被特赦的人」。书中描述中性偏正面。</div>
+      <div class="view-block view-fact"><span class="view-label fact">公开背景</span>Trump在任期内对加密行业态度从批评转为支持。2025年签署行政令成立「国家数字资产储备」。CZ的特赦是一系列加密相关特赦之一（Ross Ulbricht、Arthur Hayes等在先）。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-slate"><img src="https://unavatar.io/twitter/GaryGensler" onerror="this.remove()"><span class="initials">GG</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Gary Gensler</div>
+        <div class="card-title">前SEC主席</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-purple">复杂角色</span><span class="tag tag-gray">监管</span></div>
+    <div class="dual-view">
+      <div class="view-block view-book"><span class="view-label book">书中描述</span>2019年在东京吃寿司时态度友好，暗示想当SEC主席，还邀CZ参与MIT课程录制。两年后主导对币安提起13项指控。CZ称指控「全是莫须有的」。2025年全部撤诉后辞职。</div>
+      <div class="view-block view-fact"><span class="view-label fact">公开背景</span>Gensler于2021-2025年担任SEC主席，对多家加密企业提起诉讼。SEC诉币安案在Trump政府上台后被撤销。Gensler的监管路线在行业内争议极大，支持者认为是保护投资者，反对者认为是扼杀创新。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-slate"><span class="initials">RJ</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Richard Jones（法官）</div>
+        <div class="card-title">美国联邦法官</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">量刑裁决</span></div>
+    <div class="dual-view">
+      <div class="view-block view-book"><span class="view-label book">书中描述</span>驳回了司法部「洗钱」和「资助恐怖主义」两项指控（「没有任何证据」），拒绝羁押请求，对CZ有大量正面评价。最终以案件「规模前所未有」为由判处四个月监禁。</div>
+      <div class="view-block view-fact"><span class="view-label fact">公开背景</span>Jones法官判处CZ四个月联邦监狱服刑。检方曾寻求更长刑期。CZ于2024年6月入狱，同年9月出狱。这是美国历史上因BSA违规被判入狱的首例。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-slate"><span class="initials">张</span></div>
+      <div class="card-title-area">
+        <div class="card-name">张勇</div>
+        <div class="card-title">海底捞创始人 · 推荐语作者</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gold">推荐语</span></div>
+    <div class="desc">为本书撰写推荐语，称CZ经历是「关于韧性、远见与使命感的深刻写照」。书中无更多互动描述。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-slate"><img src="https://unavatar.io/twitter/EmmanuelMacron" onerror="this.remove()"><span class="initials">Ma</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Emmanuel Macron</div>
+        <div class="card-title">法国总统</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">峰会会面</span></div>
+    <div class="desc">书中描述2022年CZ参加其主办的「Choose France」活动并同桌就餐。法国AMF于2022年5月给了币安原则性核准，是首个核准币安的欧盟G7国家。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-slate"><span class="initials">Bu</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Nayib Bukele</div>
+        <div class="card-title">萨尔瓦多总统</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-blue">比特币法币</span></div>
+    <div class="desc">书中描述多次社交互动。萨尔瓦多于2021年成为全球第一个将比特币定为法定货币的国家。CZ曾在当地推动币安客服中心设立。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-slate"><span class="initials">JD</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Jamie Dimon</div>
+        <div class="card-title">摩根大通CEO</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">立场转变</span></div>
+    <div class="desc">书中描述2022年时公开反对比特币，CZ与其同桌合影发推。CZ指出「2025年他承认当初看法是错的，摩根大通买了比特币」。Dimon的态度转变是传统金融界对加密态度变化的缩影。</div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- ========== 对立方与争议 ========== -->
+<div class="section-band section-band-amber">
+<div class="section">
+<div id="sec-adversaries" class="section-header">
+  <div class="section-dot" style="background:var(--amber)"></div>
+  <div class="section-title">对立方与争议人物</div>
+  <div class="section-count">7 人/机构</div>
+</div>
+<div class="grid">
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-amber"><img src="https://unavatar.io/twitter/SBF_FTX" onerror="this.remove()"><span class="initials">SBF</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Sam Bankman-Fried (SBF)</div>
+        <div class="card-title">FTX创始人</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-rose">高度争议</span><span class="tag tag-gray">已定罪</span></div>
+    <div class="dual-view">
+      <div class="view-block view-book"><span class="view-label book">书中描述</span>CZ描述SBF「话绕来绕去，支支吾吾」，开会时玩游戏，用3-5倍薪水挖币安员工，在华盛顿公开抹黑币安。FTX崩盘时「24小时拿不到完整的资产负债表」。CZ将FTX崩盘视为行业灾难，称自己宣布出售FTT只是「正常的投资组合调仓」。</div>
+      <div class="view-block view-fact"><span class="view-label fact">公开背景</span>SBF于2023年被美国联邦法院以七项罪名定罪（欺诈、洗钱等），判处25年监禁。FTX于2022年11月崩溃，造成约80亿美元客户资金损失。CZ在FTX崩盘中的角色有争议——其公开宣布出售FTT被认为是引发挤兑的导火索之一。CZ自己承认这一点，但认为问题根源在FTX的财务黑洞。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-amber"><img src="star.png" onerror="this.remove()"><span class="initials">徐</span></div>
+      <div class="card-title-area">
+        <div class="card-name">徐明星</div>
+        <div class="card-title">OKCoin / OKX创始人</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-rose">商业冲突</span></div>
+    <div class="dual-view">
+      <div class="view-block view-book"><span class="view-label book">书中描述</span>CZ离职后，声称CZ「伪造了合约」（CZ称事发时已离职且从未见过该合约），并向何一施压要求公开指责CZ。何一拒绝并辞职加入币安。</div>
+      <div class="view-block view-fact"><span class="view-label fact">公开背景</span>CZ于2014-2015年在OKCoin工作，离职后双方公开撕破脸。徐明星方面也曾发布声明指责CZ。双方各执一词，具体纠纷细节无第三方定论。OKX（原OKCoin国际）现为全球主要加密交易所之一。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-amber"><span class="initials">DOJ</span></div>
+      <div class="card-title-area">
+        <div class="card-name">美国司法部 (DOJ)</div>
+        <div class="card-title">CZ认罪案的起诉方</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-rose">核心争议</span><span class="tag tag-gray">法律程序</span></div>
+    <div class="dual-view">
+      <div class="view-block view-book"><span class="view-label book">书中描述</span>全书最详细的负面机构描述。CZ认为「他们是先盯上人，再找罪名」。谈判过程中多次威胁红色通缉令，罚款从68亿谈到43亿，被描述为「心理战」和「恐吓与霸凌」。CZ称自己的全部罪行是「币安在早期服务了美国用户但没在美国注册」。</div>
+      <div class="view-block view-fact"><span class="view-label fact">公开背景</span>2023年11月，CZ承认违反美国《银行保密法》（BSA）反洗钱条款，辞去CEO职务。币安同意支付43亿美元罚款（美国历史上最大的企业罚款之一）。DOJ的指控不仅限于「未注册」——还涉及币安未建立足够的KYC/AML程序，使平台被用于可疑交易。CZ的「没有欺诈、没有洗钱」说法是他的辩护立场，但认罪协议本身涉及的违规范围较书中描述更广。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-amber"><span class="initials">SEC</span></div>
+      <div class="card-title-area">
+        <div class="card-name">美国SEC</div>
+        <div class="card-title">证券监管机构</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">已撤诉</span><span class="tag tag-rose">监管争议</span></div>
+    <div class="dual-view">
+      <div class="view-block view-book"><span class="view-label book">书中描述</span>CZ用「扼喉行动2.0」描述2023年SEC对币安的起诉，称13条指控「纯粹胡说，没有任何证据」。两年后全部撤诉（with prejudice）。</div>
+      <div class="view-block view-fact"><span class="view-label fact">公开背景</span>SEC于2023年6月起诉币安、币安美国及CZ个人。2025年Trump政府上台后，SEC在新主席领导下撤回了对币安的诉讼。撤诉更多反映了政府换届后的监管方向转变，而非对原指控实质的裁定。同期SEC撤回了对多家加密企业的诉讼。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-amber"><img src="https://unavatar.io/twitter/SenWarren" onerror="this.remove()"><span class="initials">EW</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Elizabeth Warren</div>
+        <div class="card-title">美国参议员</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">政治立场</span></div>
+    <div class="dual-view">
+      <div class="view-block view-book"><span class="view-label book">书中描述</span>判刑前五天公开写信给司法部喊话「打击加密货币」。CZ称「在我这仗上她确实赢了，但她却输了战争，她的政党输了选举」。</div>
+      <div class="view-block view-fact"><span class="view-label fact">公开背景</span>Warren是美国国会中最知名的加密行业批评者，推动了《反洗钱法案》（DAAMLA）。她的立场是保护消费者免受加密欺诈。支持者和反对者对她的评价截然相反。2024年她成功连任参议员。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-amber"><span class="initials">HZ</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Harry Zhou</div>
+        <div class="card-title">外部顾问 · 太极文件作者</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-rose">争议文件</span></div>
+    <div class="dual-view">
+      <div class="view-block view-book"><span class="view-label book">书中描述</span>火币美国前法律顾问，为币安设计美国业务架构（「太极方案」）。CZ称直接否决并发邮件通知。但文件被泄露给《福布斯》后被歪曲成币安实际执行了该方案。</div>
+      <div class="view-block view-fact"><span class="view-label fact">公开背景</span>「太极方案」（Tai Chi Document）于2020年被《福布斯》报道，描述了一个通过设立美国实体来转移监管注意力的架构。美国司法部在指控中引用了该文件。CZ声称未采纳该方案，但DOJ认为币安实际上执行了类似架构。双方说法有直接冲突。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar av-amber"><span class="initials">CE</span></div>
+      <div class="card-title-area">
+        <div class="card-name">Caroline Ellison</div>
+        <div class="card-title">Alameda Research前CEO</div>
+      </div>
+    </div>
+    <div class="tags"><span class="tag tag-gray">FTX关联</span></div>
+    <div class="dual-view">
+      <div class="view-block view-book"><span class="view-label book">书中描述</span>公开声明愿以22美元买入FTT，「暴露了底价」，被CZ称为「致命错误」。专业交易员随后做空FTT，加速FTX崩盘。</div>
+      <div class="view-block view-fact"><span class="view-label fact">公开背景</span>Ellison是SBF前女友，在FTX案中认罪并配合调查。2024年被判两年监禁。她在庭审中作证揭露了FTX/Alameda之间的资金挪用。她在FTX崩盘中的角色远比「一条推文」更复杂。</div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="quote-divider">
+  <p>「对于自己亲历的事实有完全不同的记忆和解读——这不是谁对谁错的问题，这就是人的记忆。」</p>
+  <div class="quote-src">—— 本书免责声明大意</div>
+</div>
+
+<div class="footer">
+  <div>本页面为《幣安人生》读者导读，非官方内容，不代表作者或出版方立场。</div>
+  <div style="margin-top:6px;">内容来源：赵长鹏《幣安人生》（2026年第一版） · 公开报道与法律文件</div>
+  <div style="margin-top:6px;color:#9ca3af;">「书中描述」= CZ第一人称叙述 ·「公开背景」= 第三方公开信息 · 读者请自行甄别</div>
+</div>
+
+<script>
+document.querySelectorAll('.avatar img').forEach(img => {
+  img.addEventListener('load', function() {
+    const initials = this.nextElementSibling;
+    if (initials) initials.style.display = 'none';
+  });
+});
+</script>
+
+</body>
+</html>
